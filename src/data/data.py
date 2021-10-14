@@ -14,7 +14,7 @@ from utils import get_lat_lng
 
 NETWORK_RETRY_SLEEP_TIME = 0.5
 
-
+# I added this line on purpose to chack out the git pull conflict
 
 
 def filter_list_of_games(games, teams):
@@ -22,6 +22,8 @@ def filter_list_of_games(games, teams):
     Filter the list 'games' and keep only the games which the teams in the list 'teams' are part of.
     """
     return list(game for game in set(games) if {game.away_team_id, game.home_team_id}.intersection(set(teams)))
+
+# this line too!
 
 def filter_list_of_series(series, teams):
     """
