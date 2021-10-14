@@ -171,12 +171,12 @@
       },
       "ARI": {
         "home": {
-          "zoom": "90%",
+          "zoom": "70%",
           "position": [-5, 3]
         },
         "away": {
-          "zoom": "90%",
-          "position": [7, 3]
+          "zoom": "70%",
+          "position": [-2, 6]
         }
       },
       "BOS": {
@@ -191,11 +191,11 @@
       },
       "BUF": {
         "home": {
-          "zoom": "80%",
-          "position": [-4, 9]
+          "zoom": "70%",
+          "position": [0, 9]
         },
         "away": {
-          "zoom": "80%",
+          "zoom": "70%",
           "position": [4, 9]
         }
       },
@@ -211,11 +211,11 @@
       },
       "CAR": {
         "home": {
-          "zoom": "80%",
+          "zoom": "70%",
           "position": [-16, 8]
         },
         "away": {
-          "zoom": "80%",
+          "zoom": "70%",
           "position": [15, 8]
         }
       },
@@ -256,17 +256,17 @@
         },
         "away": {
           "zoom": "80%",
-          "position": [12, 10]
+          "position": [12, 5]
         }
       },
       "DET": {
         "home": {
           "zoom": "70%",
-          "position": [-5, 8]
+          "position": [-5, 6]
         },
         "away": {
           "zoom": "70%",
-          "position": [14, 8]
+          "position": [14, 6]
         }
       },
       "EDM": {
@@ -282,11 +282,11 @@
       "FLA": {
         "home": {
           "zoom": "80%",
-          "position": [0, 9]
+          "position": [0, 5]
         },
         "away": {
           "zoom": "80%",
-          "position": [0, 9]
+          "position": [0, 5]
         }
       },
       "LAK": {
@@ -342,11 +342,11 @@
       "NYI": {
         "home": {
           "zoom": "80%",
-          "position": [-3, 8]
+          "position": [-3, 6]
         },
         "away": {
           "zoom": "80%",
-          "position": [3, 8]
+          "position": [3, 6]
         }
       },
       "NYR": {
@@ -426,7 +426,7 @@
         },
         "away": {
           "zoom": "80%",
-          "position": [0, 7]
+          "position": [7, 7]
         }
       },
       "TOR": {
