@@ -102,9 +102,9 @@ class Christmas:
         debug.info("Counting down to Christmas!")
         #check for three-digit countdown
         if self.days_to_xmas < 99:
-            x_pos = 7
+            x_pos = 40
         else:
-            x_pos = 1
+            x_pos = 34
 
         #draw days to xmas
         self.matrix.draw_text(
@@ -122,11 +122,11 @@ class Christmas:
         else:
             xmas_image = Image.open(get_file('assets/images/gbread.png'))
 
-        self.matrix.draw_image((36,1), xmas_image)
+        self.matrix.draw_image((66,1), xmas_image)
            
         #draw bottom text        
         self.matrix.draw_text(
-            (1,26), 
+            (30,26), 
             "DAYS TO CHRISTMAS", 
             font=self.font,
             fill=(255,0,0)

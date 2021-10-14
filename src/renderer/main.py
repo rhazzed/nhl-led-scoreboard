@@ -2,6 +2,7 @@ from PIL import Image
 from time import sleep
 from datetime import datetime
 import debug
+import subprocess
 from boards.boards import Boards
 from boards.clock import Clock
 from boards.stanley_cup_champions import StanleyCupChampions
@@ -15,8 +16,6 @@ from utils import get_file
 import random
 import glob
 
-
-
 class MainRenderer:
     def __init__(self, matrix, data, sleepEvent):
         self.matrix = matrix
@@ -27,6 +26,7 @@ class MainRenderer:
         self.sleepEvent = sleepEvent
         self.sog_display_frequency = data.config.sog_display_frequency
         self.alternate_data_counter = 1
+        self.last_home_name = "Warpigs"
 
     def render(self):
         if self.data.config.testing_mode:
@@ -90,6 +90,13 @@ class MainRenderer:
                 debug.info("off day data refresh")
                 self.data.refresh_data()
                 i = 0
+                # Announce no game today to /dev/shm/getNHL.txt.1
+                f = open('/dev/shm/getNHL.txt.1','w')
+                f.write('NHL: No game today')
+                f.close()
+                subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.156:/home/pi/"'
+                subprocess.run([subprocess_cmd],shell=True)
+
             else:
                 i += 1
             
@@ -103,6 +110,18 @@ class MainRenderer:
         self.home_score = self.scoreboard.home_team.goals
         self.away_penalties = self.scoreboard.away_team.penalties
         self.home_penalties = self.scoreboard.home_team.penalties
+
+        # Announce a game today to /dev/shm/getNHL.txt.1
+        home_name = self.scoreboard.home_team.name
+        away_name = self.scoreboard.away_team.name
+        stime = self.scoreboard.start_time
+        f = open('/dev/shm/getNHL.txt.1','w')
+        #f.write('Blues game today!')
+        f.write('NHL: %s vs %s, %spm\n' % (home_name,away_name,stime))
+        f.close()
+        subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.156:/home/pi/"'
+        subprocess.run([subprocess_cmd],shell=True)
+
         # Cache to save goals and penalties and allow all the details to be collected on the API.
         self.goal_team_cache = []
         self.penalties_team_cache = []
@@ -158,6 +177,7 @@ class MainRenderer:
                     self.check_new_penalty()
                     self.check_new_goals()
                     self.boards._intermission(self.data, self.matrix,self.sleepEvent)
+
                 else:
                     self.sleepEvent.wait(self.refresh_rate)
 
@@ -180,6 +200,19 @@ class MainRenderer:
                 debug.info("FINAL")
                 sbrenderer = ScoreboardRenderer(self.data, self.matrix, self.scoreboard)
                 self.check_new_goals()
+
+                # Announce a game today to /dev/shm/getNHL.txt.1
+                home_name = self.scoreboard.home_team.name
+                away_name = self.scoreboard.away_team.name
+                home_goals = self.scoreboard.home_team.goals
+                away_goals = self.scoreboard.away_team.goals
+                f = open('/dev/shm/getNHL.txt.1','w')
+                #f.write('Blues game today!')
+                f.write('%s %d, %s %d FINAL\n' % (home_name,home_goals,away_name,away_goals))
+                f.close()
+                subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.156:/home/pi/"'
+                subprocess.run([subprocess_cmd],shell=True)
+
                 if self.data.isPlayoff and self.data.stanleycup_round:
                     self.check_stanley_cup_champion()
                     if self.data.ScChampions_id:
@@ -198,6 +231,15 @@ class MainRenderer:
                 #sleep(self.refresh_rate)
                 self.sleepEvent.wait(self.refresh_rate)
                 self.boards._scheduled(self.data, self.matrix,self.sleepEvent)
+                #announce upcoming game
+                home_name = self.scoreboard.home_team.name
+                away_name = self.scoreboard.away_team.name
+                stime = self.scoreboard.start_time
+                f = open('/dev/shm/getNHL.txt.1','w')
+                f.write('NHL: %s vs %s, %spm\n' % (home_name,away_name,stime))
+                f.close()
+                subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.156:/home/pi/"'
+                subprocess.run([subprocess_cmd],shell=True)
 
             elif self.status.is_irregular(self.data.overview.status):
                 """ Pre-game state """
@@ -275,7 +317,19 @@ class MainRenderer:
                 debug.error("Last Goal is a No goal. Or the API is missing some information.")
                 self.goal_team_cache.pop(0)
 
+        # Save home_name,home_goals,away_name,away_goals to /dev/shm/getNHL.txt.1
+        f = open('/dev/shm/getNHL.txt.1','w')
+        f.write('%s %d, %s %d\n' % (home_name,home_goals,away_name,away_goals))
+        f.close()
+        subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.156:/home/pi/"'
+
+        # Check if first run, or "team name" changed (aka switched to a different game)
+        if self.last_home_name != home_name:
+            subprocess.run([subprocess_cmd],shell=True)
+            self.last_home_name = home_name
+
         if away_score < away_goals:
+            subprocess.run([subprocess_cmd],shell=True)
             self.away_score = away_goals
             self.goal_team_cache.append("away")
             if away_id not in self.data.pref_teams and pref_team_only:
@@ -285,6 +339,7 @@ class MainRenderer:
 
 
         if home_score < home_goals:
+            subprocess.run([subprocess_cmd],shell=True)
             self.home_score = home_goals
             self.goal_team_cache.append("home")
             if home_id not in self.data.pref_teams and pref_team_only:

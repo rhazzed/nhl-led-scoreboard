@@ -201,7 +201,7 @@ class ScoreboardRenderer:
         
         self.matrix.draw_text_layout(
             self.layout.SOG_label,
-            "SHOTS"
+            "S.O.G"
         )
         self.matrix.draw_text_layout(
             self.layout.SOG,
