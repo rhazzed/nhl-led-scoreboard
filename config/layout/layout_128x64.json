@@ -101,7 +101,7 @@
       "position": [1, 9]
     },
     "hashtag_dots":{
-      "position": [2, 0],
+      "position": [4, 0],
       "align": "left",
       "relative": {
         "to": "team_name",
@@ -109,7 +109,7 @@
       } 
     },
     "jersey_number":{
-      "position": [9, 0],
+      "position": [11, 0],
       "align": "left",
       "relative": {
         "to": "team_name",
@@ -118,14 +118,14 @@
     },
 
     "last_name":{
-      "position": [0, 7],
+      "position": [0, 13],
       "relative": {
         "to": "team_name",
         "align": "bottom"
       } 
     },
     "minutes":{
-      "position": [5, 6],
+      "position": [0, 12],
       "font": "medium_2",
       "relative": {
         "to": "last_name",
@@ -133,7 +133,7 @@
       } 
     },
     "severity":{
-      "position": [10, 0],
+      "position": [6, 0],
       "relative": {
         "to": "minutes",
         "align": "right"
