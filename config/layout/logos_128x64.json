@@ -171,13 +171,14 @@
       },
       "ARI": {
         "home": {
-          "zoom": "70%",
-          "position": [5, 8]
+          "zoom": "75%",
+          "position": [3, 8]
         },
         "away": {
-          "zoom": "70%",
-          "position": [-2, 6]
+          "zoom": "75%",
+          "position": [0, 8]
         }
+
       },
       "BOS": {
         "home": {
