@@ -125,7 +125,7 @@
       } 
     },
     "minutes":{
-      "position": [0, 6],
+      "position": [5, 6],
       "font": "medium_2",
       "relative": {
         "to": "last_name",
@@ -133,7 +133,7 @@
       } 
     },
     "severity":{
-      "position": [2, 0],
+      "position": [10, 0],
       "relative": {
         "to": "minutes",
         "align": "right"
