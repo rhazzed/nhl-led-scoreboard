@@ -91,7 +91,7 @@
     "scorer_info":{
       "hashtag_dots":{
         "position": [0, 8],
-        "font": "medium_2",
+        "font": "medium_3",
         "align": "left"
       }
     }
