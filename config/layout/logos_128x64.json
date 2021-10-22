@@ -171,12 +171,12 @@
       },
       "ARI": {
         "home": {
-          "zoom": "75%",
-          "position": [3, 8]
+          "zoom": "80%",
+          "position": [3, 5]
         },
         "away": {
-          "zoom": "75%",
-          "position": [0, 8]
+          "zoom": "80%",
+          "position": [0, 5]
         }
 
       },
@@ -483,11 +483,11 @@
       "WPG": {
         "home": {
           "zoom": "80%",
-          "position": [-4, 8]
+          "position": [-4, 7]
         },
         "away": {
           "zoom": "80%",
-          "position": [3, 8]
+          "position": [3, 7]
         }
       }
     }
