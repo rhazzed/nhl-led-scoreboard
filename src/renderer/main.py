@@ -16,8 +16,6 @@ from utils import get_file
 import random
 import glob
 
-#hi Eric
-
 class MainRenderer:
     def __init__(self, matrix, data, sleepEvent):
         self.matrix = matrix
