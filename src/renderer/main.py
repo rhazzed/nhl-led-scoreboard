@@ -94,7 +94,7 @@ class MainRenderer:
                 f = open('/dev/shm/getNHL.txt.1','w')
                 f.write('NHL: No game today')
                 f.close()
-                subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.156:/dev/shm/"'
+                subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.144:/dev/shm/"'
                 subprocess.run([subprocess_cmd],shell=True)
 
             else:
@@ -119,7 +119,7 @@ class MainRenderer:
         #f.write('Blues game today!')
         f.write('NHL: %s vs %s, %spm\n' % (home_name,away_name,stime))
         f.close()
-        subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.156:/dev/shm/"'
+        subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.144:/dev/shm/"'
         subprocess.run([subprocess_cmd],shell=True)
 
         # Cache to save goals and penalties and allow all the details to be collected on the API.
@@ -209,7 +209,7 @@ class MainRenderer:
                 #f.write('Blues game today!')
                 f.write('%s %d, %s %d FINAL\n' % (home_name,home_goals,away_name,away_goals))
                 f.close()
-                subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.156:/dev/shm/"'
+                subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.144:/dev/shm/"'
                 subprocess.run([subprocess_cmd],shell=True)
 
                 if self.data.isPlayoff and self.data.stanleycup_round:
@@ -237,7 +237,7 @@ class MainRenderer:
                 f = open('/dev/shm/getNHL.txt.1','w')
                 f.write('NHL: %s vs %s, %spm\n' % (home_name,away_name,stime))
                 f.close()
-                subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.156:/dev/shm/"'
+                subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.144:/dev/shm/"'
                 subprocess.run([subprocess_cmd],shell=True)
 
             elif self.status.is_irregular(self.data.overview.status):
@@ -320,7 +320,7 @@ class MainRenderer:
         f = open('/dev/shm/getNHL.txt.1','w')
         f.write('%s %d, %s %d\n' % (home_name,home_goals,away_name,away_goals))
         f.close()
-        subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.156:/dev/shm/"'
+        subprocess_cmd='sudo -H -u pi bash -c "rsync /dev/shm/getNHL.txt.1 pi@192.168.1.144:/dev/shm/"'
 
         # Check if first run, or "team name" changed (aka switched to a different game)
         if self.last_home_name != home_name:

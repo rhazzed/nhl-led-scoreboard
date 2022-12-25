@@ -260,7 +260,7 @@
       }
     },
     "forecast_temp_hi":{
-      "position": [-3, 0],
+      "position": [-3, 2],
       "font": "wx_large",
       "align": "right",
       "relative": {
@@ -269,7 +269,7 @@
       }
     },
     "forecast_hi":{
-      "position": [2, 3],
+      "position": [2, 2],
       "font": "wx_medium",
       "align": "left"
     },

@@ -253,7 +253,7 @@
       "DAL": {
         "home": {
           "zoom": "80%",
-          "position": [-10, 10]
+          "position": [-10, 5]
         },
         "away": {
           "zoom": "80%",

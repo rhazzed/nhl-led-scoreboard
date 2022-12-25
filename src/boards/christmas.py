@@ -108,7 +108,7 @@ class Christmas:
 
         #draw days to xmas
         self.matrix.draw_text(
-            (x_pos,6),
+            (x_pos,16),
             str(self.days_to_xmas),
              font=self.font.large,
              fill=(0,255,0)
@@ -122,15 +122,24 @@ class Christmas:
         else:
             xmas_image = Image.open(get_file('assets/images/gbread.png'))
 
-        self.matrix.draw_image((66,1), xmas_image)
+        self.matrix.draw_image((66,11), xmas_image)
            
         #draw bottom text        
-        self.matrix.draw_text(
-            (30,26), 
-            "DAYS TO CHRISTMAS", 
-            font=self.font,
-            fill=(255,0,0)
-        )
+        if self.days_to_xmas < 2:
+           self.matrix.draw_text(
+               (20,38), 
+               "MORE DAY UNTIL CHRISTMAS!", 
+               font=self.font,
+               fill=(255,0,0)
+           )
+
+        else:
+           self.matrix.draw_text(
+              (20,38),
+              "DAYS TO CHRISTMAS",
+              font=self.font,
+              fill=(255,0,0)
+           )
 
         self.matrix.render()
         self.sleepEvent.wait(15)
