@@ -80,7 +80,7 @@ class wxForecast:
                     self.data.wx_forecast[forecast_day][1] 
                 )
             else:
-                self.matrix.draw_text([pos,"67%"],self.data.wx_forecast[forecast_day][1],self.wxfont)
+                self.matrix.draw_text([pos,"77%"],self.data.wx_forecast[forecast_day][1],self.wxfont)
                 if self.summary_width > pos:
                     pos -= 1
                     if pos + self.summary_width < 0:
