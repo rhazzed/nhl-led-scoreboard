@@ -92,6 +92,12 @@ class wxForecast:
                 self.data.wx_forecast[forecast_day][0]
             )
 
+           #testing
+            self.matrix.draw_text_layout(
+                self.layout.forecast_banner,
+                "TOMORROW'S FORECAST"
+             )  
+
             # High temperature for the day is red
             self.matrix.draw_text_layout(
                 self.layout.forecast_temp_hi,

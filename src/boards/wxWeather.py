@@ -174,12 +174,12 @@ class wxWeather:
 
         self.matrix.draw_text_layout(
             self.layout2.gust,
-            "Gusts to:\n" + self.data.wx_curr_wind[3]
+            "Gusts to " + self.data.wx_curr_wind[3]
         )  
 
         self.matrix.draw_text_layout(
             self.layout2.visibility,
-            "Vis: " + self.data.wx_curr_wind[6]
+            "Visibility: " + self.data.wx_curr_wind[6]
         )
         
 

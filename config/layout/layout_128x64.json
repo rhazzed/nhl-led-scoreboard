@@ -259,6 +259,12 @@
         "align": "left"
       }
     },
+    "forecast_banner":{
+      "position": [0, 30],
+      "font": "wx_medium",
+      "align": "left"
+    },
+
     "forecast_temp_hi":{
       "position": [-3, 2],
       "font": "wx_large",
@@ -350,7 +356,7 @@
       }
     },
     "visibility": {
-      "position": [0,14],
+      "position": [0,8],
       "font": "wx_medium",
       "align": "left",
       "relative": {
@@ -376,12 +382,12 @@
       "align": "left-top"
     },
     "humidity":{
-      "position": ["5%", "85%"],
+      "position": ["5%", "55%"],
       "font": "wx_medium",
       "align": "bottom-left"
     },
     "pressure": {
-      "position": ["5%","10%"],
+      "position": ["5%","25%"],
       "font": "wx_medium",
       "align": "top"
     },
@@ -391,7 +397,7 @@
       "align": "right"
     },
     "dewpoint": {
-      "position": [0,"35%"],
+      "position": [0,"15%"],
       "font": "wx_medium",
       "align": "left",
       "relative": {
