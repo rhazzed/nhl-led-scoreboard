@@ -210,7 +210,7 @@ class wxWeather:
 
         self.matrix.draw_text_layout(
             self.layout3.dewpoint,
-            "Dew Pt. " + self.data.wx_current[6]
+            "Dew Point. " + self.data.wx_current[6]
         )
 
         self.matrix.draw_text_layout(
